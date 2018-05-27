@@ -1,5 +1,5 @@
 <template>
   <div>
-    <a href="/vue-proper-image/">Vue Proper Image</a>
+    <router-link :to="'/vue-proper-image/'">Vue Proper Image</router-link>
   </div>
 </template>
