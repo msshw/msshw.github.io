@@ -1,14 +1,37 @@
 <template>
     <div class="vue-proper-image-demo">
-      <h1 class="container">Vue Proper Image component</h1>
+      <article>
+        <h1 class="container">Vue Proper Image component</h1>
+        <section class="container component-description">
+          <p><span class="component-name">Vue Proper Image component</span> is designed to enhance a classic HTML <span class="emphasize">&lt;img&gt;</span> tag.</p>
+          <p>The main disadvantage of <span class="emphasize">&lt;img&gt;</span> tag is that you can not easily set ratio on that, which can be needed to keep a page's design correct. And the main advantage is that <span class="emphasize">&lt;img&gt;</span> tag can be read and indexed by search engines. </p>
+          <p>On the other hand many developers and designers use <span class="emphasize">&lt;div&gt;</span> or other block-level HTML tags with a background image and <span class="emphasize">background&nbsp;-&nbsp;size:&nbsp;cover;</span> and <span class="emphasize">padding&nbsp;-&nbsp;bottom:&nbsp;x%;</span> CSS properties on that to create a ratio. But there is another disadvantage: CSS-background can not be indexed as images.</p>
+        </section>
+        <section class="container component-description">
+          <h2>The solution</h2>
+          <p>The idea came out of a combination of a pure <span class="emphasize">&lt;img&gt;</span> tag approach and a method with a block-level element with a background and a padding. As was said, a proper image has to meet the following conditions:</p>
+          <ul>
+            <li>be able to have a ratio;</li>
+            <li>be indexable by search engines.</li>
+          </ul>
+          <p>It can be easily done by putting a <span class="emphasize">&lt;noscript&gt;</span> tag with an <span class="emphasize">&lt;img&gt;</span> tag inside a block-level element width a background and a padding. Since search engines index <span class="emphasize">&lt;noscript&gt;</span> tag content the page data which will be grabbed by a search engine will have a link to an image. And a parent block-level element with a background will render a proper image which will fit a design requirements.</p>
+        </section>
+        <section class="container component-description">
+          <h2>Extras</h2>
+          <p>Having an block-level element also gives one more advantage. These elements can have a content, in contrast to <span class="emphasize">&lt;img&gt;</span> tag which is inline element. That means what it means, you can add a content inside the <span class="component-name">Vue Proper Image component</span>. The component provides a <span class="emphasize">slot</span> with a name <span class="emphasize">content</span> which can be used to put a content in it. And of course, the content block and content itself can be styled from your app.</p>
+        </section>
+      </article>
       <div class="container">
+        <h2>Examples</h2>
         <div class="column">
           <VueProperImage
               :containerStyles="containerStyles"
               :src="'https://images.unsplash.com/photo-1486174975375-bd1c9e108596?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=39eaf4c47cc69019aa7d1d4485325c31&auto=format&fit=crop&w=2550&q=80'"
               :alt="'Alt text'">
-              <a href="https://unsplash.com/@thatsmrbio" target="_blank" class="author">Matthew Hamilton</a>
-              <span class="ratio-text">natural ratio</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@thatsmrbio" target="_blank" class="author">Matthew Hamilton</a>
+                <span class="ratio-text">natural ratio</span>
+              </template>
           </VueProperImage>
           <VueProperImage
               :containerStyles="containerStyles"
@@ -17,8 +40,10 @@
               :ratioWidth="16"
               :ratioHeight="9"
               :contentPosition="'bottom-right'">
-            <a href="https://unsplash.com/@veeterzy" target="_blank" class="author">veeterzy</a>
-            <span class="ratio-text">16:9</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@veeterzy" target="_blank" class="author">veeterzy</a>
+                <span class="ratio-text">16:9</span>
+              </template>
           </VueProperImage>
           <VueProperImage
               :containerStyles="containerStyles"
@@ -26,8 +51,10 @@
               :alt="'Alt text'"
               :ratioWidth="2"
               :ratioHeight="3">
-            <a href="https://unsplash.com/@randomlies" target="_blank" class="author">Ashim D’Silva</a>
-            <span class="ratio-text">2:3</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@randomlies" target="_blank" class="author">Ashim D’Silva</a>
+                <span class="ratio-text">2:3</span>
+              </template>
           </VueProperImage>
         </div>
         <div class="column">
@@ -38,8 +65,10 @@
               :ratioWidth="1"
               :ratioHeight="1"
               :contentPosition="'top-right'">
-            <a href="https://unsplash.com/@heysupersimi" target="_blank" class="author">Simone Hutsch</a>
-            <span class="ratio-text">1:1</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@heysupersimi" target="_blank" class="author">Simone Hutsch</a>
+                <span class="ratio-text">1:1</span>
+              </template>
           </VueProperImage>
           <VueProperImage
               :containerStyles="containerStyles"
@@ -48,8 +77,10 @@
               :ratioWidth="4"
               :ratioHeight="3"
               :contentPosition="'bottom-left'">
-            <a href="https://unsplash.com/@dmpop" target="_blank" class="author">Dmitri Popov</a>
-            <span class="ratio-text">4:3</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@dmpop" target="_blank" class="author">Dmitri Popov</a>
+                <span class="ratio-text">4:3</span>
+              </template>
           </VueProperImage>
           <VueProperImage
               :containerStyles="containerStyles"
@@ -58,8 +89,10 @@
               :ratioWidth="3"
               :ratioHeight="2"
               :contentPosition="'top-right'">
-            <a href="https://unsplash.com/@etnbr" target="_blank" class="author">Étienne Beauregard-Riverin</a>
-            <span class="ratio-text">3:2</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@etnbr" target="_blank" class="author">Étienne Beauregard-Riverin</a>
+                <span class="ratio-text">3:2</span>
+              </template>
           </VueProperImage>
         </div>
         <div class="column">
@@ -70,8 +103,10 @@
               :ratioWidth="2"
               :ratioHeight="1"
               :contentPosition="'top-right'">
-            <a href="https://unsplash.com/@grantlemons" target="_blank" class="author">Grant Lemons</a>
-            <span class="ratio-text">2:1</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@grantlemons" target="_blank" class="author">Grant Lemons</a>
+                <span class="ratio-text">2:1</span>
+              </template>
           </VueProperImage>
           <VueProperImage
               :containerStyles="containerStyles"
@@ -79,8 +114,10 @@
               :alt="'Alt text'"
               :ratioWidth="9"
               :ratioHeight="16">
-            <a href="https://unsplash.com/@abrkett" target="_blank" class="author">Adam Birkett</a>
-            <span class="ratio-text">9:16</span>
+              <template slot="content">
+                <a href="https://unsplash.com/@abrkett" target="_blank" class="author">Adam Birkett</a>
+                <span class="ratio-text">9:16</span>
+              </template>
           </VueProperImage>
         </div>
       </div>
@@ -97,7 +134,15 @@ export default {
   },
   data() {
     return {
-      containerStyles: {}
+      containerStyles: {},
+      styles: {'max-width': '500px'},
+      customWidth: 5,
+      customHeight: 1
+    }
+  },
+  watch: {
+    customWidth: function(val) {
+      console.log('val', val)
     }
   }
 }
@@ -105,13 +150,13 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-  box-sizing: border-box;
   font-size: 40px;
   margin-bottom: 40px;
+}
 
-  @media screen and (min-width: 1200px) {
-    padding: 0 10px 0;
-  }
+h2 {
+  box-sizing: border-box;
+  margin-bottom: 30px;
 }
 
 .vue-proper-image-container {
@@ -122,18 +167,51 @@ h1 {
 .container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1500px;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 1000px;
+
+  &:after {
+    content:" ";
+    display:table;
+    clear:both;
+  }
 }
 
 .column {
   box-sizing: border-box;
   width: 100%;
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 800px) {
     float: left;
     padding: 0 10px 0;
     width: 33.333%;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-left: 0;
+    }
   }
+}
+
+.component-description {
+  margin-bottom: 40px;
+}
+
+.component-name {
+  font-weight: bold;
+}
+
+.emphasize {
+  background-color: #e2e2e2;
+  border-radius: 2px;
+  padding: 2px 3px 4px 3px;
+  vertical-align: baseline;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .author {
@@ -141,6 +219,7 @@ h1 {
   border-radius: 1px;
   color: #222;
   display: inline-block;
+  font-size: .7em;
   padding: 5px 7px;
   text-decoration: none;
   transition: all 300ms ease-in;
@@ -155,6 +234,7 @@ h1 {
   background: rgba(34, 34, 34, 0.8);
   color: #fff;
   display: inline-block;
+  font-size: .7em;
   padding: 5px 7px;
   vertical-align: top;
 }
