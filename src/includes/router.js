@@ -12,7 +12,7 @@ const PageVueProperImage = () =>
 
 Vue.use(Router)
 
-export default new Router({
+var AppRouter = new Router({
   routes: [
     {
       path: '/',
@@ -35,3 +35,12 @@ export default new Router({
     }
   ]
 })
+
+AppRouter.beforeEach(function(from, to, next) {
+  setTimeout(function() {
+    window.scrollTo(0, 0)
+    next()
+  }, 100)
+})
+
+export default AppRouter
