@@ -13,6 +13,7 @@ const PageVueProperImage = () =>
 Vue.use(Router)
 
 var AppRouter = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -37,6 +38,11 @@ var AppRouter = new Router({
 })
 
 AppRouter.beforeEach(function(from, to, next) {
+  if (to.hash) {
+    next()
+    return
+  }
+
   setTimeout(function() {
     window.scrollTo(0, 0)
     next()
